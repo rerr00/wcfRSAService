@@ -11,20 +11,14 @@ namespace WcfRSAServise
     
     public class RSAService : IRSAService
     {
-        public string GeneraLlavePublica()
+        public List<string> GenerarLlaves()
         {
             ProvedorRSA rsa = new ProvedorRSA();
-            string publica = rsa.CrearllavePublica();
-            //return Convert.ToBase64String(publica);
-            return publica;
-        }
+            List<string> lstLlaves = new List<string>();
+            lstLlaves.Add(rsa.CrearllavePublica());
+            lstLlaves.Add(rsa.CrearllavePrivada());
 
-        public string GeneraLavePrivada()
-        {
-            ProvedorRSA rsa = new ProvedorRSA();
-            string privada = rsa.CrearllavePrivada();
-            //return Convert.ToBase64String(privada);
-            return privada;
+            return lstLlaves;
         }
 
         public string Encryptar(string texto,string llavePublica)
@@ -35,11 +29,8 @@ namespace WcfRSAServise
 
         public string DesenCryptar(string texto, string llavePrivada)
         {
-            //byte[] datoDecryptar = ProvedorRSA.DecryptaTexto(texto, llavePrivada);
-            //return Encoding.ASCII.GetString(datoDecryptar);
-            return "";
+            byte[] datoDecryptar = ProvedorRSA.DecryptaTexto(texto, llavePrivada);
+            return Encoding.ASCII.GetString(datoDecryptar);
         }
-
-       
     }
 }

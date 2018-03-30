@@ -12,10 +12,7 @@ namespace WcfRSAServise
     public interface IRSAService
     {
         [OperationContract]
-        string GeneraLlavePublica();
-
-        [OperationContract]
-        string GeneraLavePrivada();
+        List<string> GenerarLlaves();
 
         [OperationContract]
         string Encryptar(string texto, string llavePublica);

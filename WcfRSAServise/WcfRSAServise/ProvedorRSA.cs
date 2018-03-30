@@ -13,20 +13,18 @@ namespace WcfRSAServise
 
         public ProvedorRSA()
         {
-            ServicioRSA = new RSACryptoServiceProvider();
+            this.ServicioRSA = new RSACryptoServiceProvider();
         }
 
         public string CrearllavePublica()
         {
             string xmlLLavePublica = this.ServicioRSA.ToXmlString(false);
-            //return Encoding.ASCII.GetBytes(xmlLLavePublica);
             return xmlLLavePublica;
         }
 
         public string CrearllavePrivada()
         {
             string xmlLLavePrivada = this.ServicioRSA.ToXmlString(true);
-            //return Encoding.ASCII.GetBytes(xmlLLavePrivada);
             return xmlLLavePrivada;
         }
 
